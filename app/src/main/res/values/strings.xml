@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Notes</string>
+    <string name="title_activity_notas">Notas</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="note_title">Notas</string>
+    <string name="favorite_notes">Favoritas</string>
+    <string name="user_account">Cuenta</string>
+
+    <string name="cancel">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="add_nota">Agregar nueva nota</string>
+    <string name="nota_message">Ingrese la nueva nota</string>
+    <string name="title_note">Título</string>
+    <string name="red_color">Rojo</string>
+    <string name="green_color">Verde</string>
+    <string name="blue_color">Azul</string>
+    <string name="color_blanco">Blanco</string>
+    <string name="select_color">Elige un color</string>
+    <string name="add_to_favoritas">Agregar a favoritas</string>
+</resources>

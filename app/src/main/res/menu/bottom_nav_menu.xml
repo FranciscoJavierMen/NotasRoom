@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_notes"
+        android:icon="@drawable/ic_note"
+        android:title="@string/note_title" />
+
+    <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_star"
+        android:title="@string/favorite_notes" />
+
+    <item
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/ic_account"
+        android:title="@string/user_account" />
+
+</menu>
