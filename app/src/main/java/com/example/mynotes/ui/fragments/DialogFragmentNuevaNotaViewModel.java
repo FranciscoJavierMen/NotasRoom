@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DialogFragmentNuevaNotaViewModel extends AndroidViewModel {
-    private LiveData<ArrayList<NotaEntity>> allNotas;
+    private LiveData<List<NotaEntity>> allNotas;
     private NotaRepository repository;
 
     public DialogFragmentNuevaNotaViewModel(Application application){
@@ -24,7 +24,7 @@ public class DialogFragmentNuevaNotaViewModel extends AndroidViewModel {
     }
 
     //Fragemento que necesita recibir la nueva lista de datos
-    public LiveData<ArrayList<NotaEntity>> getAllNotas(){
+    public LiveData<List<NotaEntity>> getAllNotas(){
         return allNotas;
     }
 

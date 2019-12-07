@@ -8,17 +8,17 @@ import androidx.room.Update;
 
 import com.example.mynotes.db.entity.NotaEntity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface NotaDao {
     //Obtener datos de latabla de notas
     @Query("SELECT * FROM notas ORDER BY titulo ASC")
-    LiveData<ArrayList<NotaEntity>> getAll();
+    LiveData<List<NotaEntity>> getAll();
 
     //Obtener la lista de notas favoritas
     @Query("SELECT * FROM notas WHERE favorito LIKE 'true'")
-    LiveData<ArrayList<NotaEntity>> getFavoritas();
+    LiveData<List<NotaEntity>> getFavoritas();
 
     //Insertar datos en la tabla de notas
     @Insert

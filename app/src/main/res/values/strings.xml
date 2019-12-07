@@ -19,4 +19,5 @@
     <string name="color_blanco">Blanco</string>
     <string name="select_color">Elige un color</string>
     <string name="add_to_favoritas">Agregar a favoritas</string>
+    <string name="add_note_action">Agergar nota</string>
 </resources>

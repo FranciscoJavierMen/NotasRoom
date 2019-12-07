@@ -10,11 +10,12 @@ import com.example.mynotes.db.dao.NotaDao;
 import com.example.mynotes.db.entity.NotaEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NotaRepository {
     private NotaDao notaDao;
-    private LiveData<ArrayList<NotaEntity>> allNotas;
-    private LiveData<ArrayList<NotaEntity>> allNotasFavoritas;
+    private LiveData<List<NotaEntity>> allNotas;
+    private LiveData<List<NotaEntity>> allNotasFavoritas;
 
     public NotaRepository(Application application){
         NotaRoomDatabase db = NotaRoomDatabase.getDatabase(application);
@@ -23,11 +24,11 @@ public class NotaRepository {
         allNotasFavoritas = notaDao.getFavoritas();
     }
 
-    public LiveData<ArrayList<NotaEntity>> getAll(){
+    public LiveData<List<NotaEntity>> getAll(){
        return allNotas;
     }
 
-    public LiveData<ArrayList<NotaEntity>> getAllFavoritas(){
+    public LiveData<List<NotaEntity>> getAllFavoritas(){
         return allNotasFavoritas;
     }
 

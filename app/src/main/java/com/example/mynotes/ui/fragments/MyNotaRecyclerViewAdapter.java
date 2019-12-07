@@ -13,13 +13,14 @@ import com.example.mynotes.R;
 import com.example.mynotes.db.entity.NotaEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<NotaEntity> mValues;
+    private List<NotaEntity> mValues;
     private Context context;
 
-    public MyNotaRecyclerViewAdapter(ArrayList<NotaEntity> items, Context context) {
+    public MyNotaRecyclerViewAdapter(List<NotaEntity> items, Context context) {
         mValues = items;
         this.context = context;
     }
@@ -55,7 +56,7 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
         return mValues.size();
     }
 
-    public void setNewNotas(ArrayList<NotaEntity> notas){
+    public void setNewNotas(List<NotaEntity> notas){
         this.mValues = notas;
         notifyDataSetChanged();
     }
