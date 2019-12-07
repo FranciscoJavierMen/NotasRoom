@@ -17,11 +17,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mynotes.R;
+import com.example.mynotes.db.entity.NotaEntity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class DialogFragmentNuevaNota extends DialogFragment {
-
-    private DialogFragmentNuevaNotaViewModel mViewModel;
     private View view;
 
     private TextInputLayout edtTitulo, edtNota;
@@ -32,13 +31,6 @@ public class DialogFragmentNuevaNota extends DialogFragment {
         return new DialogFragmentNuevaNota();
     }
 
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DialogFragmentNuevaNotaViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
     @NonNull
     @Override
@@ -64,12 +56,16 @@ public class DialogFragmentNuevaNota extends DialogFragment {
                         }
 
                         boolean isfavorito = switchFavorito.isChecked();
+                        //Comunicar al viewmodel el nuevo dato
+                        DialogFragmentNuevaNotaViewModel mViewModel = ViewModelProviders.of(getActivity()).get(DialogFragmentNuevaNotaViewModel.class);
+                        mViewModel.insertNota(new NotaEntity(titulo, nota, isfavorito, color));
+                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.dismiss();
                     }
                 });
         LayoutInflater inflater = getActivity().getLayoutInflater();

@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -21,6 +24,7 @@ public class FragmentNota extends Fragment {
     private int mColumnCount = 2;
     private ArrayList<NotaEntity> notaEntityList;
     private MyNotaRecyclerViewAdapter adapter;
+    private DialogFragmentNuevaNotaViewModel notaViewModel;
 
     public FragmentNota() {
     }
@@ -63,14 +67,23 @@ public class FragmentNota extends Fragment {
             }
 
             notaEntityList = new ArrayList<>();
-            notaEntityList.add(new NotaEntity("Compra del día", "Comprar pan tostado y mermelada", true, R.color.colorAccent));
-            notaEntityList.add(new NotaEntity("Hacer ejercicio", "Recordar hacer ehercicio cuando los demás se vallan a comer por la despedida de los colombianos", false, R.color.colorPrimaryDark));
-            notaEntityList.add(new NotaEntity("Comprar chamarra", "No olvidar pasar acomprar la chamarra de cuero", true, R.color.colorPrimary));
 
             adapter = new MyNotaRecyclerViewAdapter(notaEntityList, getActivity());
             recyclerView.setAdapter(adapter);
+
+            lanzarViewModel();
         }
         return view;
+    }
+
+    private void lanzarViewModel() {
+        notaViewModel = ViewModelProviders.of(getActivity()).get(DialogFragmentNuevaNotaViewModel.class);
+        notaViewModel.getAllNotas().observe(getActivity(), new Observer<ArrayList<NotaEntity>>() {
+            @Override
+            public void onChanged(ArrayList<NotaEntity> notaEntities) {
+                adapter.setNewNotas(notaEntities);
+            }
+        });
     }
 
 }

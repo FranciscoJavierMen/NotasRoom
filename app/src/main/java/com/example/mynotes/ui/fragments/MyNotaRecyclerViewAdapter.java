@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecyclerViewAdapter.ViewHolder> {
 
-    private final ArrayList<NotaEntity> mValues;
+    private ArrayList<NotaEntity> mValues;
     private Context context;
 
     public MyNotaRecyclerViewAdapter(ArrayList<NotaEntity> items, Context context) {
@@ -53,6 +53,11 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void setNewNotas(ArrayList<NotaEntity> notas){
+        this.mValues = notas;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
