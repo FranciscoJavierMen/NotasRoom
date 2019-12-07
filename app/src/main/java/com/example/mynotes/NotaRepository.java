@@ -36,6 +36,10 @@ public class NotaRepository {
         new inserAsyncTask(notaDao).execute(nota);
     }
 
+    public void update(NotaEntity nota){
+        new updateAsyncTask(notaDao).execute(nota);
+    }
+
     private static class inserAsyncTask extends AsyncTask<NotaEntity, Void, Void>{
         private NotaDao notaDaoAsyncTask;
 
@@ -46,6 +50,20 @@ public class NotaRepository {
         @Override
         protected Void doInBackground(NotaEntity... notaEntities) {
             notaDaoAsyncTask.insert(notaEntities[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<NotaEntity, Void, Void>{
+        private NotaDao notaDaoAsyncTask;
+
+        updateAsyncTask(NotaDao dao){
+            notaDaoAsyncTask = dao;
+        }
+
+        @Override
+        protected Void doInBackground(NotaEntity... notaEntities) {
+            notaDaoAsyncTask.update(notaEntities[0]);
             return null;
         }
     }

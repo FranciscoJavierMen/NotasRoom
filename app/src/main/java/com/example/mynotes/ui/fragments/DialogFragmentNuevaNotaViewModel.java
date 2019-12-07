@@ -33,4 +33,8 @@ public class DialogFragmentNuevaNotaViewModel extends AndroidViewModel {
         repository.insert(nuevaNotaEntity);
     }
 
+    //Actualizar una nota creada
+    public void updateNota(NotaEntity actualizarNotaEntity){
+        repository.update(actualizarNotaEntity);
+    }
 }

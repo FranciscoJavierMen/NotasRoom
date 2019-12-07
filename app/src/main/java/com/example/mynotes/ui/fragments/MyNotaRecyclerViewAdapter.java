@@ -6,23 +6,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynotes.R;
 import com.example.mynotes.db.entity.NotaEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecyclerViewAdapter.ViewHolder> {
 
     private List<NotaEntity> mValues;
     private Context context;
+    private DialogFragmentNuevaNotaViewModel notaViewModel;
 
     public MyNotaRecyclerViewAdapter(List<NotaEntity> items, Context context) {
         mValues = items;
         this.context = context;
+        notaViewModel = ViewModelProviders.of((AppCompatActivity)context).get(DialogFragmentNuevaNotaViewModel.class);
     }
 
     @Override
@@ -45,7 +49,17 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
         holder.favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (holder.mItem.isFavorito()){
+                    holder.mItem.setFavorito(false);
+                    holder.favorito.setImageResource(R.drawable.ic_star_border);
+                    Toast.makeText(context, "Nota removida de favoritos", Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.mItem.setFavorito(true);
+                    holder.favorito.setImageResource(R.drawable.ic_star);
+                    Toast.makeText(context, "Nota agregada a favoritos", Toast.LENGTH_SHORT).show();
+                }
 
+                notaViewModel.updateNota(holder.mItem);
             }
         });
 
